@@ -1,0 +1,4 @@
+[
+    [
+    { "keys": ["alt+shift+q"], "command": "remove_paragraph_line_breaks"},
+]

@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Remove Paragraph Line Breaks",
+        "command": "remove_paragraph_line_breaks"
+    },
+]
