@@ -4,13 +4,13 @@
 # Released under the MIT License; refer to LICENSE.txt.
 
 import functools
-import os
 
 import sublime
 import sublime_plugin
 
 from sublime import Region
 
+LINESEP = '\n'
 
 def region_reducer(state, region):
     """Helper method for line_to_paragraph_regions."""
@@ -62,9 +62,9 @@ class remove_paragraph_line_breaks(sublime_plugin.TextCommand):
         lines = [view.substr(Region(p[0], p[1])) for p in paragraph_regions]
         output = ''.join(
             '{contents}{linesep}'.format(
-                contents=line.replace(os.linesep, ' '),
-                linesep=os.linesep
-            ) if line else os.linesep
+                contents=line.replace(LINESEP, ' '),
+                linesep=LINESEP
+                ) if line else LINESEP
             for line in lines
         )
         view.replace(edit, region_selection, output)
