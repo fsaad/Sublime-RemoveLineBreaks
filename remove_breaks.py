@@ -42,6 +42,13 @@ class remove_paragraph_line_breaks(sublime_plugin.TextCommand):
         view = self.view
         window = self.view.window()
         regions = list(view.sel())
+        # No region selected. According to FichteFoll:
+        # > "A view can have no selection, in which case view.sel()[0] errors."
+        # although I am unable to get sublime into a state where view.sel()[0]
+        # returns an IndexError. Will take their word for it.
+        if len(regions) == 0:
+            window.status_message('No region selected.')
+            return
         # Only handle one region for now. To handle multiple regions, it should
         # be easy to specify the remainder of this method as a function of
         # with a region parameter and provide each selected region as an
